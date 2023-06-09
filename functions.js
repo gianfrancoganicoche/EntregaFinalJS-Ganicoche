@@ -44,6 +44,25 @@ function vaciarCarrito() {
     })
 }
 
+//Realizar compra para recordatorio
+function realizarCompra() {
+    Swal.fire({
+        title: "Parece que te han quedado items en el carrito!",
+        confirmButtonText: "Finalizar compra",
+        showCancelButton: true,
+        cancelButtonText: "Seguir comprando",
+    }) 
+.then((resultado) => {
+    if (resultado.isConfirmed) {
+        Swal.fire({
+            title: "Felicidades! Compra realizada de forma correcta"
+        })
+        localStorage.removeItem('carrito');
+        actualizarItemsDelCarrito()
+        }
+    })
+}
+
 // Ordenar el carrito por precio total
 function ordenarCarritoPorPrecio() {
     carrito = JSON.parse(localStorage.getItem('carrito')) || [];

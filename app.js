@@ -45,3 +45,15 @@ document.getElementById('ordenarCarrito').addEventListener('click', () => {
 });
 
 actualizarItemsDelCarrito();
+
+let temporizador;
+
+function recordatorioFinalizarCompra() {
+    if (carrito.length > 0) {
+    realizarCompra ();
+    temporizador = setTimeout(recordatorioFinalizarCompra, 300000);
+    clearTimeout(temporizador);
+    }
+}
+
+temporizador = setTimeout(recordatorioFinalizarCompra, 300000);
